@@ -1,0 +1,113 @@
+body{
+    background: #000;
+    color: #999;
+    font-family: 'arial';
+}
+.cover {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.modal{
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    left: 0; top: 0; 
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+/* 해시 정보가 해당요소의아이디와 일치할때 */
+.modal:target {
+    opacity: 1;
+    pointer-events: auto;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+.modal:target .window {
+    transform: translateY(0%);
+    opacity: 1;
+
+}
+
+.window {
+    background: #222;
+    flex-basis: 820px;
+    display: flex;
+    transform: translateY(-150%);
+    opacity: 0;
+    transition: all 2s;
+
+}
+.win_content {
+    flex-grow: 1;
+    padding: 32px;
+}
+.win_content h2 {
+    font-weight: bold;
+    font-size: 30px;
+    color: crimson;
+    margin-bottom: 15px;
+    position: relative;
+}
+.win_content h2::before{
+    content: '';
+    position: absolute;
+    left: -32px; top: 0; bottom: 0;
+    width: .4em;
+    background: currentColor;
+}
+.win_content p {
+    margin-bottom: 1em;
+    color: #999;
+    line-height: 1.4;
+
+}
+.win_side {
+    background: #191919;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+
+}
+.side_img {
+    max-width: 240px;
+    margin: 0 20px;
+    animation: fly 1s infinite alternate;
+}
+
+.side_bottom .button {
+    display: block;
+    background: dodgerblue;
+    color: aliceblue;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: .2em;
+    text-indent: .2em;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid dodgerblue;
+}
+.side_bottom .line {
+    background: transparent;
+    color: dodgerblue;
+}
+ 
+
+@keyframes fly {
+    0% {
+        transform: translateY(5%);
+    }
+    100% {
+        transform: rotate(10deg) translateY(-50%);
+    }
+}

@@ -1,0 +1,76 @@
+
+body{
+    background: #222;
+    color: #999;
+}
+
+#menu{
+    background: #222;
+    box-shadow:
+         -.2em -.2em 10px #555,
+         .2em .2em 10px #000 ;
+    border-radius: 6px 0;
+    color: aliceblue;
+    text-align: center;
+    /* 가운데 정렬 */
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    display: flex;
+    line-height: 1; 
+    /* 줄간격 영역이 없어짐 */
+    padding: 0 .6em;
+    font-family: 'Arial';
+    letter-spacing: .2em;
+    text-indent: 0.2em;
+    /* 들여쓰기 */
+
+}
+.menu_item{
+    position: relative;
+}
+.menu_item a{
+    display: block;
+    padding: .4em;
+}
+.menu_sub {
+    background: #000;
+    white-space: nowrap; 
+    /* 한줄로 나오게 */
+    position: absolute;
+    left: 50%; top: 20px;
+    transform: translate(-50%, 1.8em);
+    opacity: 0;
+    pointer-events: none;
+    /* 투명도로 가려준 것이 안나옴 */
+    transition: all .3s ease;
+    padding: 10px;
+
+}
+.menu_sub a{
+    font-size: 20px;
+}
+
+.menu_sub::before{
+    content: '';
+    position: absolute;
+    left: 0; top: -20px; right: 0;
+    height: 20px;
+}
+/* 하위메뉴 띄어줬을때 연결고리 */
+
+.menu_sub::after {
+    content: '';
+    position: absolute;
+    left: 50%; top: -15px;
+    transform: translateX(-50%);
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+}
+
+.menu_item:hover .menu_sub{
+    opacity: 1;
+    pointer-events: auto; 
+}

@@ -1,0 +1,84 @@
+body {
+    background: #111;
+    font-family:'Arial';
+    line-height: 1.45;
+    
+}
+.wrap {
+margin: 0 auto;
+width: 1000px;
+}
+
+ .title{
+    position: relative;
+    text-transform: uppercase;
+    color: #999;
+    margin: 30px 0;
+    width: max-content;
+    letter-spacing: .4em;
+    font-size: 30px;
+    transition: all .3s ease;
+}
+.title::before{
+    content: '';
+    position: absolute;
+    left: 0; bottom: -.2em; right: 0;
+    height: .2em;
+    background: currentColor;
+    margin-right: .4em;
+
+}
+
+.title:hover {
+    color: #fff;
+}
+.food{
+    display: flex;
+}
+.food li {
+    position: relative;
+    width: 33.3333%;
+    overflow: hidden;
+    transition: all .4s ease;
+    display: flex;
+    justify-content: space-around;
+    /* 이미지를 가운데 정렬 형식으로 보여짐 */
+    opacity: .4;
+}
+.food img {
+    flex-shrink: 0;
+}
+
+/* 선택된것만 커지고 나머지 작아지게 하는 법 */
+.food:hover li {
+    width: 25%;
+}
+.food li:hover {
+    width: 50%;
+    opacity: 1;
+}
+
+.food_contents{
+    position: absolute;
+    left: 0; bottom: 0; right: 0;
+    margin: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, .8);
+    color: aliceblue;
+    overflow: hidden;
+}
+
+.food_contents h2{
+    margin-bottom: 10px;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+}
+ .cookie h2 {color: orangered;}
+ .cake h2{color: pink;}
+ .crepe h2{color: yellow;}
+
+.food_contents p {
+    width: 400px;
+    text-align: justify;
+}

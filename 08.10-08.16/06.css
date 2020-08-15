@@ -1,0 +1,71 @@
+
+:root {
+    font-family: 'arial';
+}
+
+
+body {
+    background: #222;
+}
+.container {
+    margin: 0 auto;
+    max-width: 960px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: purple;
+    overflow: hidden;
+
+}
+.cover {
+    color: #fff;
+    width: 60%;
+    
+}
+.cover img {
+   width: 100%;
+  
+}
+
+.contents {
+    width: 40%;
+    color: rgb(248, 211, 248);
+    text-align: center;
+    padding: 0 40px;
+    box-sizing: border-box;
+    
+}
+.contents h1 {
+   font-weight: bold;
+   font-size: 30px;
+   color: #fff;
+   text-transform: uppercase;
+   margin-bottom: 20px;
+   letter-spacing: .1em;
+}
+.contents span {
+ text-transform: uppercase;
+ letter-spacing: .2em;
+}
+
+@media (max-width: 720px) {
+    .container,
+    .cover,
+    .contents {
+       display: block;
+       width: auto;
+    }
+    .cover img {
+        position: relative;
+        width: 100%;
+    }
+    .contents {
+      position: absolute;
+      bottom: 0; right: 0;
+      background: inherit;
+       margin: 20px;
+       max-width: 400px;
+       padding: 20px;
+    }
+}
