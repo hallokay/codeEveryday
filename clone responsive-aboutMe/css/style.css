@@ -1,0 +1,205 @@
+
+/* animation */
+@keyframes rolling {
+    0% {
+      transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-20%);
+    }
+    50% {
+        transform: translateY(-40%);
+    }
+    75% {
+        transform: translateY(-60%);
+    }
+    100% {
+        transform: translateY(-80%);
+    }
+}
+
+
+
+/* style */
+body {
+    background: #111;
+}
+
+#portrait {
+    background-image: url(/images/profile.png);
+    background-size: cover;
+    background-position: center;
+    padding-top: 56.25%; 
+    /* 16:9 */
+}
+
+#profile {
+    position: relative;
+    padding: 5%;
+    color: #999;
+}
+
+.profile h2 {
+    font-size: 1.9em;
+    font-weight: bold;
+    color: rgb(77, 137, 248);
+    border-top: 3px solid;
+    margin-bottom: 5%;
+    position: sticky;
+    top: 0;
+    background: #111;
+    box-shadow: 0 0 50px 10px #111;
+}
+
+/* 프로필 상단 */
+.profile {
+    padding-bottom: 8%;
+}
+
+/* 이름 타이틀 */
+.name {
+    font-size: 30px;
+    line-height: 1.5;
+    /* 라인하이트의 크기 1 은 폰트사이즈인 30이다 
+    글자 자간이 너무 달라붙지않게 여유를 위해 1.5*/
+    margin-bottom: 40px;
+    position: sticky;
+    top: 0;
+    background: #111;
+    box-shadow: 0 0 50px 10px #111;
+}
+.name_job {
+    display: inline-block;
+    color: #fff;
+    vertical-align: top;
+    height: 1.5em;
+    overflow: hidden;
+    position: relative;
+}
+.name_job::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    box-shadow: inset 0 0 5px 5px #111 ;
+    margin-left: -1em;
+    margin-right: -1em;
+}
+
+.name_job ul {
+    animation: rolling 8s reverse infinite;
+}
+
+.name h1 {
+    font-weight: bold;
+    color: cornflowerblue;
+    font-size: 1.5em;
+    line-height: 0.7;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/*링크 아이콘 */
+ .icons a {
+     background: url(/images/icons.png) no-repeat;
+     width: 30px; height: 30px;
+     display: inline-block;
+ }
+
+ .icons a.twitter { background-position: left top;}
+ .icons a.facebook { background-position: center top;}
+ .icons a.pinterest { background-position: right top;}
+ 
+ .icons a:hover  { background-position-y: bottom;}
+
+
+
+
+/* 이력 */
+.time_line {
+    font-size: .9rem;
+}
+.time_line h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(122, 166, 248);
+    float: left;
+    margin: .2em .5em 0 .2em;
+    line-height: 1.5;
+    border-top: 2px solid;
+    letter-spacing: .2em;
+    
+}
+
+.time_line li {
+    margin-bottom: 3%;
+}
+.time_line li:last-child {
+    margin-bottom: 0;
+}
+
+/* 스킬 */
+.skill h3 {
+    color: aliceblue;
+}
+/* 그래프 */
+.graph li {
+    color: aliceblue;
+    background: rgb(123,114,231);
+    background: linear-gradient(90deg, rgba(123,114,231,1) 0%, rgba(52,116,251,1) 27%, rgba(91,168,232,1) 74%);
+    padding: .5em 1em;
+    margin: .4em 0;
+    border-radius: 50px;
+    box-sizing: border-box;
+}
+.graph li::before {
+    content: attr(data-score);
+    float: right;
+}
+/* [속성선택자] */
+.graph li[data-score="50%"] { width: 50%; }
+.graph li[data-score="60%"] { width: 60%; }
+.graph li[data-score="70%"] { width: 70%; }
+.graph li[data-score="80%"] { width: 80%; }
+.graph li[data-score="90%"] { width: 90%; }
+.graph li[data-score="100%"] { width: 100%;}
+
+/* contact */
+
+.contact dt {
+    color: rgb(83, 138, 255);
+    float: left;
+    width: 4em;
+    text-transform: uppercase;
+    
+}
+
+.contact dd{
+    overflow: hidden;
+}
+
+
+@media (min-width: 768px) {
+    #portrait {
+        position: fixed;
+        left: 0; top: 0;
+        width: 60vw;
+        height: 100vh;
+        padding: 0;
+    }
+    #profile {
+        margin-left: 60vw ;
+    }
+    .name {
+        font-size: 4vw;
+    }
+    .time_line li {
+        width: 50%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    .time_line li:nth-child(even) {
+        margin-left: auto;
+        margin-top: -50px;
+        margin-bottom: -50px;
+    }
+}
