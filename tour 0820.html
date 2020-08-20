@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orka Tours</title>
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <!-- <link rel="stylesheet" href="/css/reset.css"> -->
+    <!-- <link rel="stylesheet" href="/css/media.css"> -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+    <style>
+/* reset */
+@charset "utf-8";
+/*여백초기화*/
+body, 
+div, p, select,
+ul, ol, li, 
+dl, dt, dd,
+h1, h2, h3, h4, h5, h6, 
+input, fieldset, legend, textarea, button, form,figure,img,
+table, th, td, tr {
+    margin: 0; 
+    padding: 0;}
+
+/*스킵메뉴 초기화*/
+a {
+    color: #222; 
+    text-decoration: none;  
+}
+a:hover {
+    color: #ccc;
+ }
+
+/*폰트 초기화*/
+body,input,textarea,table,button,select {
+    font-family: 'Nanum Gothic';
+    font-size: 13px; 
+    color: #222; 
+    line-height: 1.5; 
+ }
+
+/*폰트 스타일 초기화*/
+em ,address, strong {
+    font-style: normal;
+}
+
+/*블릿기호 초기화*/
+
+dl,ul,li,ol,menu{
+    list-style: none;
+}
+/* 이미지 비디오 */
+img, video{
+    width: 100%;
+}
+
+/*제목 초기화*/
+h1,h2,h3,h4,h5,h6{
+    font-size: 13px; 
+    color: #222; 
+    font-weight: normal; 
+}
+
+/*테두리 초기화*/
+img, fieldset, button{
+    border: 0 none;
+}
+
+
+/*ir기법*/
+.ir_pm{ 
+    display: block; 
+    overflow: hidden; 
+    font-size: 0;
+    line-height: 0;
+    text-indent: 9999px;
+}
+.ir_wa{
+     display: block; 
+     overflow: hidden; 
+     position: relative; 
+     z-index: -1; 
+     width: 100%;
+     height: 100%;
+}
+
+/*접근성을 위한 텍스트 숨김효과*/
+.ir_su{
+    display: block; 
+    overflow: hidden; 
+    position: absolute; 
+    width: 0;
+    height: 0;
+    line-height: 0;
+    text-indent: 9999px;
+}
+
+/* style */
+
+
+
+body {
+    font-family: 'avenir'sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: .03rem;
+    white-space: nowrap;
+    
+}
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    background: rgba(0,0,0,.3);
+}
+
+/* 헤더 */
+#header{
+    position: relative;
+    background: rgba(0,0,0,.5);
+    padding: 2em;
+}
+.header_inner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+/* 로고 */
+.logo img {
+    position: absolute;  
+     left:3em; top: 15%; 
+    width: 15%; 
+    transition: all .4s;
+}
+.logo img:hover {
+    color: aliceblue;
+    font-weight: bold;
+    transform: scale(1.2);
+}
+
+/* 헤더 메뉴 */
+.header_nav {
+    margin-left: 15%;
+}
+.header_nav .main_menu{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+ .main_list a { 
+    color: aliceblue;
+    text-transform: uppercase;
+    padding: .5em 1em;
+    font-size: 1.2em;
+    white-space: nowrap;
+    transition: all .4s;
+}
+ .main_list:hover > a {
+    border-radius: 10px;
+    background: rgba(0,0,0,.4);
+}
+
+/* header nav sub-menu */
+ .main_list {
+    position: relative;
+}
+.sub_menu {
+    position: absolute;
+    left: 50%; top: 2em;
+    transform: translate(-50%, 2em);
+    font-size: 10px;
+    background: aqua;
+    opacity: 0;
+    pointer-events: none; 
+    transition: all .4s;
+}
+.sub_menu a {
+    display: block;
+    padding: 10px 20px;    
+}
+
+
+.main_list:hover .sub_menu {
+    opacity: 1;
+    pointer-events: auto;
+}
+.sub_menu::before {
+    content: '';
+    position: absolute;
+    left: 0;top: -1em; right: 0;
+    height: 20px;
+    /* background: #000; */
+
+}
+
+
+/* 컨텍트 */
+.contact ul {
+    display: flex;    
+    font-size: 1.2em;
+    text-align: center;
+    
+}
+.contact li {
+    color: aliceblue;
+    padding: .5em 1em;
+}
+
+.contact_btn {
+    color: aliceblue;
+    border: 1px solid mediumturquoise;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: .5em 1em;
+}
+
+.contact_btn:hover {
+    color: aliceblue;
+    background: mediumturquoise;
+}
+
+.sign_in {
+    color: aliceblue;
+}
+
+
+
+/* 1024px */
+@media (max-width:1024px)
+{
+ .header_nav , .contact {
+     display: none;
+ }
+ .logo {
+     
+ }
+}
+
+
+
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div id="tour">
+        <div class="wrap">
+            <header id="header">
+                <div class="header_inner">
+                    <div id="logo">
+                        
+                        <a class="logo" href="#">
+                            <img src="/logo1.svg" alt="로고">
+                        </a>
+                    </div>
+                    
+                    <!--헤더 로고 -->
+
+                    <nav class="header_nav">
+                        <ul class="main_menu">
+                            <li class="main_list">
+                                <a href="#">tours</a>
+                                <ul class="sub_menu">
+                                    <li class="sub_list">
+                                        <a href="#">sub_menu1</a>
+                                    </li>
+                                    <li class="sub_list">
+                                        <a href="#">sub_menu2</a>
+                                    </li>
+                                    <li class="sub_list">
+                                        <a href="#">sub_menu3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="main_list">
+                                <a href="#">discover KO</a>
+                                <ul class="sub_menu">
+                                    <li class="sub_list">
+                                        <a href="#">sub_menu1</a>
+                                    </li>
+                                    <li class="sub_list">
+                                        <a href="#">sub_menu2</a>
+                                    </li>
+                                    <li class="sub_list">
+                                        <a href="#">sub_menu3</a>
+                                    </li>
+                                </ul>   
+                            </li>
+                            <li class="main_list">
+                                <a href="#">reviews</a>
+                            </li>
+                            <li class="main_list">
+                                <a href="#">about us</a>
+                                <ul class="sub_menu">
+                                    <li class="sub_list">
+                                        <a href="#">sub_menu1</a>
+                                    </li>
+                                    <li class="sub_list">
+                                        <a href="#">sub_menu2</a>
+                                    </li>
+                                    <li class="sub_list">
+                                        <a href="#">sub_menu3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="main_list">
+                                <a href="#">deals</a>                       
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- 네비 -->
+
+                    <div class="contact">
+                        <ul>
+                            <li>
+                                <a class="contact_btn" href="#">Contact Us</a>
+                            </li>
+                            <li>
+                                <a class="sign_in" href="#"> 
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>                         
+                                    <span class="ir_su">sign in</span> 
+                                </a>
+                            </li>
+                        </ul>                                                        
+                    </div>
+                    <!--헤더 contact-->
+                </div>
+
+            </header>
+            <!-- 헤더 영역 -->
+
+            <main id="contents">
+                <h2>컨텐츠</h2>
+                        <!-- 나중에 h2 지워 -->
+                        
+
+                <!-- 배너 부분 -->
+                <section class="cont_banner"> 
+                    <div class="container">
+                       
+                        <div class="banner_inner">                          
+                            <h1>
+                                welcome to
+                               <strong>orka tours!</strong>
+                            </h1>
+                            <a href="#">view More</a>
+                        </div> 
+                     <!-- 배너 안쪽 내용 -->    
+
+                    </div>                                     
+                </section>
+                <!-- //배너 -->
+
+                <section>
+                    <div class="container">
+                        <div class="">
+                            <h2>섹션1 제목</h2>
+                        </div>
+                    </div>
+                </section>
+
+                <section> 
+                    <div class="container">
+                        <h2>섹션2 제목</h2>
+                        <div class="card">  
+                            <div class="card_img">
+                                <a href="#"><img src="" alt="여행이미지"></a>
+                            </div>                         
+                            <div class="card_cont">
+                                <h3>여행상품 이름</h3>
+                                <div class="price">
+                                    price from
+                                    <span>$1,599</span>
+                                    NZD
+                                </div>
+                                <p>
+                                    여행설명
+                                </p>
+                                <a href="#">view tour</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="container">
+                        <h2>섹션3 제목</h2>
+                    </div>
+                </section>
+                <section>
+                    <div class="container">
+                        <h2>섹션4 제목</h2>
+                    </div>
+                </section>
+            
+            </main>
+            <!-- 메인 컨텐츠 -->
+
+            <footer id="footer">
+                <div class="container">
+                    <div class="footer_inner">
+                        <h2>footer</h2>
+                        <!-- 나중에 지워 -->
+                        <div class="footer_brand">
+                            <a href="#">
+                                <span>logo</span>
+                            </a>
+                            <address>
+                                <dl>
+                                    <div class="email">
+                                        <dt>Email</dt>
+                                    <dd>bmbm@ggg.com</dd>
+                                    </div>
+                                    <div class="cell">
+                                        <dt>Cell</dt>
+                                        <dd>01023232323</dd>
+                                    </div>
+                                    <p>부산시 어쩌구 주소</p>                               
+                                </dl>
+                            </address>
+                        </div>
+                        <!-- //footer 브랜드 설명 -->
+
+                        <nav class="footer_nav">
+                            <span class="footer_title">about Us</span>
+                            <ul>
+                                <li>menu1</li>
+                                <li>menu2</li>
+                                <li>menu3</li>
+                                <li>menu4</li>
+                            </ul>
+                        </nav>
+                        <nav class="footer_nav">
+                            <span class="footer_title">about Us</span>
+                            <ul>
+                                <li>menu1</li>
+                                <li>menu2</li>
+                                <li>menu3</li>
+                                <li>menu4</li>
+                            </ul>
+                        </nav>
+                        <nav class="footer_nav">
+                            <span class="footer_title">about Us</span>
+                            <ul>
+                                <li>menu1</li>
+                                <li>menu2</li>
+                                <li>menu3</li>
+                                <li>menu4</li>
+                            </ul>
+                        </nav>
+                        <nav class="footer_nav">
+                            <span class="footer_title">about Us</span>
+                            <ul>
+                                <li>menu1</li>
+                                <li>menu2</li>
+                                <li>menu3</li>
+                                <li>menu4</li>
+                            </ul>
+                        </nav>
+                        <!-- //footer nav -->
+                    </div>
+                </div>
+            </footer>
+            <!-- 푸터 -->
+        </div>       
+    </div>
+</body>
+</html>
