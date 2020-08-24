@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winery Tour</title>
+    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+    <!-- <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script> -->
+
+    <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"> -->
+
+
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/index.css">
+
+    <!-- slick CSS -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+    <!-- fonts -->
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+
+<!-- js 제이쿼리 아래에 연동해놓음 -->
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+
+
+
+/* ----------------------------------헤더 스크롤부분------------------------------------------------ */
+
+.header {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    z-index: 10; 
+    background: rgba(0,0,0,.1);
+    box-shadow: inset 0 2px 100px rgba(0,0,0,.1);
+}
+
+
+
+.header.sticky {
+    position: fixed;
+    background: #111;
+    box-shadow:  0 2px 50px rgba(0,0,0,.5);
+}
+
+
+
+
+/* ----------------------------------//헤더 스크롤부분------------------------------------------------ */
+
+/* ------------------------------------------슬릭슬라이드 버튼부분-------------------------------------------- */
+
+/* 버튼 초기화*/
+button {
+    border: 0;
+}
+
+
+/* 슬릭슬라이드 버튼 */
+
+.slick-prev,
+.slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(0,0,0,.6);
+    color: aliceblue;
+    display: inline-block;
+    text-indent: -9999px;
+
+    font: normal normal normal 14px/1 FontAwesome; 
+}
+
+
+.slick-prev {
+    left: 0;
+} 
+
+.slick-next{
+    right: 0;
+  
+}
+/* 슬릭슬라이더 화살표는 슬릭안에 있는 CSS를 이용하기 때문에 슬릭버튼을 변경해줘야해 */
+.slick-prev::before{
+    content: "\f053";
+    color: aliceblue;
+    font-size: 15px;
+
+    position: absolute;
+    top: 50%; left: 15px;
+    transform: translateY(-50%);
+    text-indent: 0;
+}
+
+ 
+.slick-next::before{
+  
+    content: "\f054";
+    color: aliceblue;
+    font-size: 15px;
+
+    position: absolute;
+    top: 50%; right: 15px;
+    transform: translateY(-50%);
+    text-indent: 0;
+    
+}
+
+
+
+
+/* ------------------------------------------//슬릭슬라이드 버튼부분-------------------------------------------- */
+
+
+
+
+
+
+
+        .l_main {
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 543px);
+            margin-top: 0;
+            
+        }
+        .tour_list {
+            padding: 95px 0;
+            background-color: #f5f6f6;
+            margin: 0;
+        
+        }
+        .l_container {
+            width: 100%;
+            max-width: 73.75rem;
+            padding-right: .625rem;
+            padding-left:.625rem;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .tl_header {
+            margin-bottom: 200px;
+            text-align:center;
+        }
+
+        .tl_grid {
+            display: grid;
+            grid-template:auto/repeat(3,minmax(0,1fr));
+            grid-gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .tl_grid>*{
+            width: auto;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+        }
+        .tcard {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            box-shadow: 0 1px 12px 0 rgba(0,0,0,.05), 0 0 1px 0 rgba(0,0,0,.1);;
+        }
+        .tcard_image {
+            display: flex;
+            background: rgba(0,0,0,.04);
+        }
+        .tcard_image:before {
+            content: "";
+            display: block;
+            float: left;
+            padding-bottom: 60%;
+        }
+        .tcard_image .thumbnail_gallery {
+            width: 100%;
+            padding-bottom: 0;
+        }
+        .tg_wrapper {
+            position: relative;
+        }
+        .tg {
+            position: relative;
+            max-height: 475px;
+            overflow: hidden;
+        }
+
+        .swiper_wrapper {
+            transform: translateZ(0);
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            box-sizing: content-box;
+        }
+
+        .swiper_slide {
+            display: flex;
+            background:rgba(0,0,0,.04) ;
+            flex-shrink: 0;
+            height: 100%;
+            position: relative;
+            transition-property: transform, -webkit-transform;;
+        }
+        .swiper_slide:before {
+            content: "";
+            display: block;
+            float: left;
+            padding-bottom: 61%;
+        }
+        .swiper_slide a {
+            width: 100%;
+            background-color: transparent;
+            text-decoration: underline;
+            outline-width: thin;
+            outline-color: rgba(224,19,86,.25);
+            color: currentColor;
+            transition: color .2s,background-color .2s;
+        }
+        .img_wrapper {
+            width: 100%;
+            height: 100%;
+            filter: blur(0);
+        }
+        .img_wrapper > img {
+            opacity: 1;
+            transition: opacity .3s;
+            position: static;
+        }
+        .swipe_slide img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        img {
+            max-width: 100%;
+            vertical-align: middle;
+        }
+        .l_img_wrapper.blur {
+            filter: blur(15px);
+        }
+
+
+    </style>
+   
+    
+</head>
+<body>
+    <div id="whole">
+        <div>
+            
+            <main class="l_main">
+                <div nami="i" class="tour_list">
+                    <div class="l_container">
+                        <div class="tl_header">
+                            <h2 class="heading2">Our Adventure Tour</h2>
+                        </div>
+                        <!-- // tl_header-->
+                        <div class="tl_grid">
+                            <div class="tcard">
+                                <div class="tcard_image">
+                                    <div class="thumbnail_gallery">
+                                        <div class="tg_wrapper">
+                                            <div class="tg swiper">
+
+<!-- ----------------------------------------여기부터 끼워넣어------------------------------------------- -->
+
+                                                <div class="swiper_wrapper">
+
+                                                    <div class="swiper_slide swiper_slide" style="width: 373px;">
+                                                        <a href="#">
+                                                            <span class="img_wrapper l_img_wrapper" style="color:transparent; display: inline-block;">
+                                                                <img src="/half.png" alt="Half-Day">
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                    <!-- 슬라이드 이미지1 -->
+                                                    <div class="swiper_slide swiper_slide-next" style="width: 373px;">
+                                                        <a href="#">
+                                                            <span class="img_wrapper l_img_wrapper" style="color:transparent; display: inline-block;">
+                                                                <img src="/full.png" alt="Half-Day">
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                    <!-- 슬라이드 이미지2 -->
+                                                    <div class="swiper_slide swiper_slide-next" style="width: 373px;">
+                                                        <a href="#">
+                                                            <span class="img_wrapper l_img_wrapper" style="color:transparent; display: inline-block;">
+                                                                <img src="/private.png" alt="Half-Day">
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                    <!-- 슬라이드 이미지3 -->
+                                                
+                                                </div>  
+<!-- ----------------------------------------// 여기까지 class="swiper_wrapper"------------------------------------------- -->
+                                                
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //카드 이미지 부분 -->
+                                
+                                <div class="tc_content">
+                                    <h3 class="heading3">Half-Daytour</h3>
+                                    <div class="tc_price">
+                                        price from
+                                        <span>$1,000</span>
+                                        nzd
+                                    </div>
+                                    <div>
+                                        <div class="star-ratings" title="4.7 Stars" style="position: relative; box-sizing: border-box; display: inline-block;"><svg class="star-grad" style="position: absolute; z-index: 0; width: 0px; height: 0px; visibility: hidden;"><defs><linearGradient id="starGrad753523679224948" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" class="stop-color-first" style="stop-color: rgb(255, 220, 0); stop-opacity: 1;"></stop><stop offset="70%" class="stop-color-first" style="stop-color: rgb(255, 220, 0); stop-opacity: 1;"></stop><stop offset="70%" class="stop-color-final" style="stop-color: rgb(203, 211, 227); stop-opacity: 1;"></stop><stop offset="100%" class="stop-color-final" style="stop-color: rgb(203, 211, 227); stop-opacity: 1;"></stop></linearGradient></defs></svg><div class="star-container" style="position: relative; display: inline-block; vertical-align: middle; padding-right: 0px;"><svg viewBox="0 0 51 48" class="widget-svg" style="width: 20px; height: 20px; transition: transform 0.2s ease-in-out 0s;"><path class="star" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z" style="fill: rgb(255, 220, 0); transition: fill 0.2s ease-in-out 0s;"></path></svg></div><div class="star-container" style="position: relative; display: inline-block; vertical-align: middle; padding-left: 0px; padding-right: 0px;"><svg viewBox="0 0 51 48" class="widget-svg" style="width: 20px; height: 20px; transition: transform 0.2s ease-in-out 0s;"><path class="star" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z" style="fill: rgb(255, 220, 0); transition: fill 0.2s ease-in-out 0s;"></path></svg></div><div class="star-container" style="position: relative; display: inline-block; vertical-align: middle; padding-left: 0px; padding-right: 0px;"><svg viewBox="0 0 51 48" class="widget-svg" style="width: 20px; height: 20px; transition: transform 0.2s ease-in-out 0s;"><path class="star" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z" style="fill: rgb(255, 220, 0); transition: fill 0.2s ease-in-out 0s;"></path></svg></div><div class="star-container" style="position: relative; display: inline-block; vertical-align: middle; padding-left: 0px; padding-right: 0px;"><svg viewBox="0 0 51 48" class="widget-svg" style="width: 20px; height: 20px; transition: transform 0.2s ease-in-out 0s;"><path class="star" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z" style="fill: rgb(255, 220, 0); transition: fill 0.2s ease-in-out 0s;"></path></svg></div><div class="star-container" style="position: relative; display: inline-block; vertical-align: middle; padding-left: 0px;"><svg viewBox="0 0 51 48" class="widget-svg multi-widget-selected" style="width: 20px; height: 20px; transition: transform 0.2s ease-in-out 0s;"><path class="star" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z" style="fill: url(&quot;#starGrad753523679224948&quot;); transition: fill 0.2s ease-in-out 0s;"></path></svg></div></div>
+                                        <span>4.7</span>
+                                    </div>
+                                    <p class="c-tour-card__description">Enjoy adventure activities, incredible scenery and fascinating Māori culture as we show you the highlights between Auckland to Wellington.
+
+                                    </p>
+                                    <a class="c-button c-button--border c-button--small" href="/new-zealand-tours/north-island/">View tour</a>
+                                
+                                </div>
+                                <!-- //카드 컨텐츠 부분 -->
+                            </div>
+                            <!-- //카드 -->
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </main>
+
+                 
+        </div>
+    </div>
+    <!-- whole -->
+
+
+
+
+    <!-- 제이쿼리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- 슬릭 js -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<!-- 슬릭 슬라이드 -->
+	<script>
+            // 헤더 스크롤
+        $(function(){
+
+        var $header = $('.header');
+        $(window).scroll(function(){
+            if($(this).scrollTop() > 0){
+                $header.addClass('sticky');
+            }else{
+                $header.removeClass('sticky');
+            }
+        });
+     
+        
+
+    // 슬릭슬라이드
+
+          $('.swiper_wrapper').slick({
+              slide: 'div',		//슬라이드 되어야 할 태그 ex) div, li 
+              infinite : true, 	//무한 반복 옵션	 
+              slidesToShow : 1,		// 한 화면에 보여질 컨텐츠 개수
+              slidesToScroll : 1,		//스크롤 한번에 움직일 컨텐츠 개수      	
+              arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
+              dots : false, 		// 스크롤바 아래 점으로 페이지네이션 여부
+              autoplay : false,			// 자동 스크롤 사용 여부
+              draggable : true, 	//드래그 가능 여부 
+            
+          });
+
+
+
+
+        });
+        
+        
+        
+        
+  </script>
+    
+</body>
+</html>
