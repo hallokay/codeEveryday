@@ -1,0 +1,97 @@
+body{
+    background: #222;
+}
+
+img {
+    vertical-align: top;
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 1000px;
+    
+}
+
+
+.title {
+    position: relative;
+    width: max-content;
+    font-size: 3rem;
+    color: #999;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    margin: 30px 0;
+    /* border-bottom: 5px solid; */
+    text-indent: .4em;
+    transition: all .4s;
+    
+}
+/* 텍스트 밑줄 */
+.title::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: currentColor;
+    height: 5px;
+    transition: all .4s;
+    margin-right: 7em;
+}
+
+.title:hover {
+    color: aliceblue;
+}
+
+.title:hover::before{
+    margin-right: 0;
+}
+
+
+
+.food {
+    
+    display: flex;
+}
+/* 이미지 */
+.food li {
+    position: relative;
+    width: 33.3333%;
+     overflow: hidden;
+     transition: all .4s;
+     display: flex;
+     justify-content: space-around;
+    opacity: .4;
+}
+/* 호버된것 말고 주변것들 줄이기 */
+.food:hover li {
+    width: 25%;
+}
+.food li:hover {
+    width: 50% ;
+    opacity: 1;
+}
+
+.food img {
+    flex-shrink: 0;
+}
+
+/* 내용 */
+
+.food_contents {
+    position: absolute;
+    bottom: 0; left: 0; 
+    margin: 20px;
+    padding: 20px;
+    color: aliceblue;
+    overflow: hidden;
+    background: rgba(0,0,0,.5);
+}
+.food_contents h2 {
+    color: aliceblue;
+    font-size: 2rem;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.food_contents p {
+    width: 300px;
+}
