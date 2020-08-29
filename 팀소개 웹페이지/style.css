@@ -1,0 +1,82 @@
+
+body {
+background: #222;
+
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.team {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.team_item {
+    position: relative;
+    flex-basis: 150px;
+    flex-shrink: 0;
+    overflow: hidden;
+    margin: 0 10px;
+    transition: all .4s;
+    /* width: 33.3333%; */
+
+}
+
+.team_item:hover {
+    flex-basis: 200px;
+    margin: 0 20px;
+    /* width: 50%; */
+}
+
+.profile::before {
+    content: '';
+    position: absolute;
+    top: 0;left: 0;right: 0;bottom: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.07653483756783963) 100%);
+}
+
+.profile_contents {
+    position: absolute;
+    bottom: 0;left: 0;
+    color: aliceblue;
+    padding: 10px;
+
+}
+
+.profile_contents h2 {
+    color: aliceblue;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.profile_contents span {
+    display: block;
+    font-size: .7em;
+}
+.profile_contents p {
+    /* display: none; */
+    font-size: .9em;
+    min-width: 130px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .6s;
+    transition-delay: .3s;
+    opacity: 0;
+
+}
+
+.team_item:hover .profile_contents p {
+    max-height: 6em;
+    opacity: 1;
+    /* transition: all .3s; */
+}
