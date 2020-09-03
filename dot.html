@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dot animation</title>
+
+    <style>
+body{
+    height: 100vh;
+    background-image: 
+    linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+}
+
+.loading {
+    width: 20px;
+    height: 100px;
+    /* background: #fff; */
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%);
+    animation: loading 1s ease infinite;
+}
+.circle1 , .circle2 {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+}
+.circle2{
+    margin-top: 60px;
+}
+
+
+@keyframes loading{
+
+    0%   {transform: rotate(0); }
+    100% {transform: rotate(360deg); }  
+    
+
+
+}
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+    </div>
+</body>
+</html>
